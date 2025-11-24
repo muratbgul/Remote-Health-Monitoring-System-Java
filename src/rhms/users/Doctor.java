@@ -1,31 +1,34 @@
 package rhms.users;
 
-public class Doctor {
-
-    private String doctorId;
-    private String name;
+public class Doctor extends User {
     private String specialty;
+    private String licenseNumber;
 
-    public Doctor(String doctorId, String name, String specialty) {
-        this.doctorId = doctorId;
-        this.name = name;
+    public Doctor(String doctorId, String name, String email, String specialty, String licenseNumber) {
+        super(doctorId, name, email);
         this.specialty = specialty;
-    }
-
-    public String getDoctorId() {
-        return doctorId;
-    }
-
-    public String getName() {
-        return name;
+        this.licenseNumber = licenseNumber;
     }
 
     public String getSpecialty() {
         return specialty;
     }
 
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Doctor: " + name + " | Specialty: " + specialty + 
+                          " | License: " + licenseNumber + " | Email: " + email);
+    }
+
     public void reviewAlert(String alertMessage) {
-        System.out.println("Doctor " + name + " reviewing alert: " + alertMessage);
+        System.out.println("Dr. " + name + " reviewing alert: " + alertMessage);
+    }
+
+    public void prescribeMedication(String medication, Patient patient) {
+        System.out.println("Dr. " + name + " prescribed " + medication + " to " + patient.getName());
     }
 }
-

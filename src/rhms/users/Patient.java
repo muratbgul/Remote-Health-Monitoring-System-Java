@@ -1,25 +1,15 @@
 package rhms.users;
 
-public class Patient {
-
-    private String patientId;
-    private String name;
+public class Patient extends User {
     private int age;
     private String condition;
+    private String bloodType;
 
-    public Patient(String patientId, String name, int age, String condition) {
-        this.patientId = patientId;
-        this.name = name;
+    public Patient(String patientId, String name, String email, int age, String condition, String bloodType) {
+        super(patientId, name, email); 
         this.age = age;
         this.condition = condition;
-    }
-
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public String getName() {
-        return name;
+        this.bloodType = bloodType;
     }
 
     public int getAge() {
@@ -30,7 +20,17 @@ public class Patient {
         return condition;
     }
 
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Patient: " + name + " | Age: " + age + 
+                          " | Condition: " + condition + " | Blood Type: " + bloodType);
+    }
+
     public void showInfo() {
-        System.out.println("Patient: " + name + " (Condition: " + condition + ")");
+        displayInfo(); 
     }
 }
